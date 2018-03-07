@@ -20,37 +20,11 @@ class UserProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
         setSupportActionBar(toolbar)
-
-        println("NARUTOOOOOOOOOOOOOOOO")
-       getToken()
 //
 //        fab.setOnClickListener { view ->
 //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                    .setAction("Action", null).show()
 //        }
-    }
-
-    fun getToken(){
-
-        println("Pegando o token")
-        val authService = AuthServiceImpl()
-
-        val authObservable = authService.authenticate("leonardo.piovezan@ebanx.com","senbonzakura1960")
-
-        disposable = authObservable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ response ->
-
-                    println("Deu boa")
-            println(response.access_token)
-
-        }, {error ->
-                    println("Deu ruim")
-            println(error.message)
-        })
-
-
-
     }
 
     override fun onDestroy() {
