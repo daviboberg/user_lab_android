@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 
 import kotlinx.android.synthetic.main.activity_user_profile.*
 import Model.AuthServiceImpl
+import Model.UserServiceImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -21,13 +22,28 @@ class UserProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_profile)
         setSupportActionBar(toolbar)
 
-        println("NARUTOOOOOOOOOOOOOOOO")
-       getToken()
-//
-//        fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                    .setAction("Action", null).show()
-//        }
+       // getUser()
+    }
+
+    fun getUser(){
+
+        val userService = UserServiceImpl()
+
+        val userObservable = userService.getUser()
+
+        userObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ response ->
+
+                    println("Deu Boa")
+                    println(response.users.email)
+
+                }, { error ->
+
+                    println("Deu ruim")
+                    println(error.message)
+                })
+
     }
 
     fun getToken(){
@@ -36,6 +52,12 @@ class UserProfileActivity : AppCompatActivity() {
         val authService = AuthServiceImpl()
 
         val authObservable = authService.authenticate("leonardo.piovezan@ebanx.com","senbonzakura1960")
+
+
+
+
+
+
 
         disposable = authObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
