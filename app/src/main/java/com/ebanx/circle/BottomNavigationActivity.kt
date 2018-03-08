@@ -15,7 +15,7 @@ class BottomNavigationActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.profile -> {
-                startFragmentTransaction(EvaluateProfileFragment())
+                startFragmentTransaction(UserProfileFragment())
                 return@OnNavigationItemSelectedListener true
             }
         }
