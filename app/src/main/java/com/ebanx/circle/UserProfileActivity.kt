@@ -57,7 +57,7 @@ class UserProfileActivity : AppCompatActivity() {
     }
 
 
-    fun setUpViewWith(user:UserDataResponse){
+    fun setUpViewWith(user:UserDataResponse) {
 
 
         nameTextView.text = user.first_name + " " + user.last_name
@@ -68,7 +68,7 @@ class UserProfileActivity : AppCompatActivity() {
         Picasso.with(this.baseContext)
                 .load(user.avatar_urls.medium)
                 .into(userProfileImageView)
-
+    }
 
     override fun onDestroy() {
         super.onDestroy()

@@ -49,6 +49,7 @@ class LoginActivity : AppCompatActivity() {
 
                     // temporary activity, should go to list users
                     startActivity(Intent(this, BottomNavigationActivity::class.java))
+                    TokenManager.instance.authenticationData = response
 
                 }, { error ->
                     val toastTest = Toast.makeText(this, "Invalid Username or Login", Toast.LENGTH_SHORT)
