@@ -3,7 +3,19 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_user_profile">UserProfileActivity</string>
     <string name="title_activity_evaluate_profile">EvaluateProfileActivity</string>
+
     <string name="title_activity_evaluation">EvaluationActivity</string>
     <string name="title_activity_list_view">ListViewActivity</string>
     <string name="title_activity_list_item_actitivy">ListItemActitivy</string>
+
+    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="lista">Lista</string>
+    <string name="profile">Profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="user_list">user list</string>
 </resources>

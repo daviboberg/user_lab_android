@@ -5,10 +5,12 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 
 import kotlinx.android.synthetic.main.activity_user_profile.*
-import Model.AuthServiceImpl
+import Model.UserDataResponse
+import Model.UserServiceImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.content_user_profile.*
 
 
 class UserProfileActivity : AppCompatActivity() {
@@ -21,37 +23,53 @@ class UserProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_profile)
         setSupportActionBar(toolbar)
 
-        println("NARUTOOOOOOOOOOOOOOOO")
-       getToken()
-//
-//        fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                    .setAction("Action", null).show()
-//        }
+
+        getUser()
+
+       // getToken()
     }
 
-    fun getToken(){
+    fun getUser(){
 
-        println("Pegando o token")
-        val authService = AuthServiceImpl()
+        val userService = UserServiceImpl()
 
-        val authObservable = authService.authenticate("leonardo.piovezan@ebanx.com","senbonzakura1960")
+        val userObservable = userService.getUser()
 
-        disposable = authObservable.subscribeOn(Schedulers.io())
+        val subscribe = userObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ response ->
+                .subscribe(
+                        { response ->
 
-                    println("Deu boa")
-            println(response.access_token)
+                            println("Deu Boa")
+                            setUpViewWith(response.users.first())
 
-        }, {error ->
-                    println("Deu ruim")
-            println(error.message)
-        })
+                        },
+                        { error ->
+
+                            println("Deu ruim")
+                            println(error.message)
+                        }
+                )
+
+        disposable = subscribe
+
+    }
+
+
+    fun setUpViewWith(user:UserDataResponse){
+
+
+        nameTextView.text = user.first_name + " " + user.last_name
+        emailTextView.text = user.email
+        jobTextView.text = user.job_title
+        teamTextView.text = user.avatar_urls.medium
 
 
 
     }
+
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
