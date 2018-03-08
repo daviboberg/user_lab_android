@@ -26,6 +26,6 @@ class UserServiceImpl {
     }
 
     fun getUser():Single<UserResponse>{
-        return userService.getUserWith("Bearer 13ed348d0f392368cbb88f1177327d0c3b8fa4d32de3ab8f0bd8e69f38d4376d")
+        return userService.getUserWith("Bearer 582d3f45ff59c48c5dfb5454f894713a17a903c921873fbd1ffc6af32d9b1c1b")
     }
 }

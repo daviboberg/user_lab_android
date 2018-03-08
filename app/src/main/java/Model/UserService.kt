@@ -2,8 +2,7 @@ package Model
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.Query
-import retrofit2.http.Url
+
 
 /**
  * Created by leonardoapiovezan on 07/03/18.
@@ -13,7 +12,6 @@ interface UserService {
     @GET("users/me")
 
     fun getUserWith(@Header("Authorization") accessToken:String):Single<UserResponse>
-
 
 }
 
