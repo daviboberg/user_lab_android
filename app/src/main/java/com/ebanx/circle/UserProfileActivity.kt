@@ -2,7 +2,7 @@ package com.ebanx.circle
 
 import Model.AuthServiceImpl
 import android.os.Bundle
-
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 
 import kotlinx.android.synthetic.main.activity_user_profile.*
@@ -13,7 +13,6 @@ import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-
 import kotlinx.android.synthetic.main.content_user_profile.*
 
 
@@ -29,10 +28,13 @@ class UserProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_profile)
         setSupportActionBar(toolbar)
 
+
+        getUser()
+
        // getToken()
 //        getUser()
 
-        getUserList()
+        //getUserList()
 
 
     }
@@ -72,13 +74,16 @@ class UserProfileActivity : AppCompatActivity() {
                 .load(user.avatar_urls.medium)
                 .into(userProfileImageView)
 
-    }
-
     override fun onStop() {
         if (isFinishing){
             disposable?.dispose()
         }
         super.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable?.dispose()
     }
 
 

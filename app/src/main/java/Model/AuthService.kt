@@ -20,10 +20,10 @@ interface AuthService {
 //class AuthenticationResponse(val data: AuthenticationDataResponse)
 
 class AuthenticationDataResponse(
-        val access_token:String,
-        val token_Type:String,
-        val expires_in: Int,
-        val refresh_token: String,
-        val scope: String,
-        val created_at: Int
+        var access_token:String,
+        var token_Type:String,
+        var expires_in: Int,
+        var refresh_token: String,
+        var scope: String,
+        var created_at: Int
 )
