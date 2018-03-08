@@ -75,17 +75,19 @@ class UserProfileActivity : AppCompatActivity() {
                 .into(userProfileImageView)
     }
 
-    override fun onStop() {
-        if (isFinishing){
+    }
+        override fun onStop() {
+            if (isFinishing) {
+                disposable?.dispose()
+            }
+            super.onStop()
+        }
+
+        override fun onDestroy() {
+            super.onDestroy()
             disposable?.dispose()
         }
-        super.onStop()
-    }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        disposable?.dispose()
-    }
 
 
     fun getUserList(){

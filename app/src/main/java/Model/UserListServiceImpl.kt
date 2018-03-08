@@ -1,5 +1,6 @@
 package Model
 
+import com.ebanx.circle.TokenManager
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -23,7 +24,7 @@ class UserListServiceImpl {
 
     }
 
-    fun getUserList(page:Int, pageCount: Int) = userListService.getUserList("Bearer 582d3f45ff59c48c5dfb5454f894713a17a903c921873fbd1ffc6af32d9b1c1b",
+    fun getUserList(page:Int, pageCount: Int) = userListService.getUserList("Bearer ${TokenManager.instance.authenticationData?.access_token}",
             page,pageCount)
 
 }

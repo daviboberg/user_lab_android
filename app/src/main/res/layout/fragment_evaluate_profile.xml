@@ -4,48 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ebanx.circle.EvaluateProfileFragment">
+    tools:context="com.ebanx.circle.UserProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/userProfileNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="250dp"
+        android:layout_alignEnd="@+id/userProfileEmailTextView"
+        android:layout_alignStart="@+id/userProfileEmailTextView"
+        android:layout_centerVertical="true"
         android:text="Name" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/userProfileEmailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView2"
-        android:layout_centerHorizontal="true"
+        android:layout_alignStart="@+id/userProfileJobTextView"
+        android:layout_alignTop="@+id/userProfileNameTextView"
         android:layout_marginTop="55dp"
         android:text="e-mail" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/userProfileTeamTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/userProfileEmailTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="39dp"
         android:text="time" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/userProfileJobTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView4"
+        android:layout_below="@+id/userProfileTeamTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
         android:text="jobtitle" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/userProfileImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
