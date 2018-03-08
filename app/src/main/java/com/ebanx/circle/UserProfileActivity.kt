@@ -23,6 +23,7 @@ class UserProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_profile)
         setSupportActionBar(toolbar)
 
+
         getUser()
 
        // getToken()
@@ -66,6 +67,9 @@ class UserProfileActivity : AppCompatActivity() {
 
 
     }
+
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
