@@ -3,6 +3,7 @@ package com.ebanx.circle
 
 import Model.UserDataResponse
 import Model.UserServiceImpl
+import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -45,11 +46,11 @@ class UserProfileFragment : Fragment() {
         }
     }
 
-
     override fun onDetach() {
         super.onDetach()
         mListener = null
     }
+
 
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

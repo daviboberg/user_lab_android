@@ -1,5 +1,6 @@
 package Model
 
+import com.ebanx.circle.TokenManager
 import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -26,6 +27,6 @@ class UserServiceImpl {
     }
 
     fun getUser():Single<UserResponse>{
-        return userService.getUserWith("Bearer 582d3f45ff59c48c5dfb5454f894713a17a903c921873fbd1ffc6af32d9b1c1b")
+        return userService.getUserWith("Bearer ${TokenManager.instance.authenticationData?.access_token}")
     }
 }
