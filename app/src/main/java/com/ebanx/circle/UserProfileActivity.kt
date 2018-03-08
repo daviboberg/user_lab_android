@@ -68,8 +68,6 @@ class UserProfileActivity : AppCompatActivity() {
 
     }
 
-    }
-
 
     override fun onDestroy() {
         super.onDestroy()
