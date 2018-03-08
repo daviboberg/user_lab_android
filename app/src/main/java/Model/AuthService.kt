@@ -17,6 +17,8 @@ interface AuthService {
                      @Query("password") password: String):Single<AuthenticationDataResponse>
 }
 
+//class AuthenticationResponse(val data: AuthenticationDataResponse)
+
 class AuthenticationDataResponse(
         val access_token:String,
         val token_Type:String,
