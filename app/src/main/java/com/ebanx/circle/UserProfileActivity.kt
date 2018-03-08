@@ -5,11 +5,12 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 
 import kotlinx.android.synthetic.main.activity_user_profile.*
-import Model.AuthServiceImpl
+import Model.UserDataResponse
 import Model.UserServiceImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.content_user_profile.*
 
 
 class UserProfileActivity : AppCompatActivity() {
@@ -22,7 +23,9 @@ class UserProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_profile)
         setSupportActionBar(toolbar)
 
-       // getUser()
+        getUser()
+
+       // getToken()
     }
 
     fun getUser(){
@@ -31,45 +34,34 @@ class UserProfileActivity : AppCompatActivity() {
 
         val userObservable = userService.getUser()
 
-        userObservable.subscribeOn(Schedulers.io())
+        val subscribe = userObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ response ->
+                .subscribe(
+                        { response ->
 
-                    println("Deu Boa")
-                    println(response.users.email)
+                            println("Deu Boa")
+                            setUpViewWith(response.users.first())
 
-                }, { error ->
+                        },
+                        { error ->
 
-                    println("Deu ruim")
-                    println(error.message)
-                })
+                            println("Deu ruim")
+                            println(error.message)
+                        }
+                )
+
+        disposable = subscribe
 
     }
 
-    fun getToken(){
 
-        println("Pegando o token")
-        val authService = AuthServiceImpl()
-
-        val authObservable = authService.authenticate("leonardo.piovezan@ebanx.com","senbonzakura1960")
+    fun setUpViewWith(user:UserDataResponse){
 
 
-
-
-
-
-
-        disposable = authObservable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ response ->
-
-                    println("Deu boa")
-            println(response.access_token)
-
-        }, {error ->
-                    println("Deu ruim")
-            println(error.message)
-        })
+        nameTextView.text = user.first_name + " " + user.last_name
+        emailTextView.text = user.email
+        jobTextView.text = user.job_title
+        teamTextView.text = user.avatar_urls.medium
 
 
 

@@ -11,13 +11,14 @@ import retrofit2.http.Url
 interface UserService {
 
     @GET("users/me")
-    fun getUserWith(@Header("Bearer ") accessToken:String):Single<UserResponse>
+
+    fun getUserWith(@Header("Authorization") accessToken:String):Single<UserResponse>
 
 
 }
 
 
-class UserResponse(val users: UserDataResponse)
+class UserResponse(val users: List<UserDataResponse>)
 
 
 class UserDataResponse(
@@ -26,6 +27,15 @@ class UserDataResponse(
         val job_title:String,
         val first_name:String,
         val last_name:String,
-        val email:String
+        val email:String,
+        val avatar_urls:PictureUrls
+)
 
+class PictureUrls(
+
+        val icon:String,
+        val large:String,
+        val small:String,
+        val medium:String,
+        val original:String
 )

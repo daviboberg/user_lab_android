@@ -15,9 +15,8 @@ class UserServiceImpl {
 
     init {
 
-
         val retrofit = Retrofit.Builder()
-                .baseUrl("https://app.pingboard.com/oauth/")
+                .baseUrl("https://app.pingboard.com/api/v2/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(MoshiConverterFactory.create())
                 .build()
@@ -27,6 +26,6 @@ class UserServiceImpl {
     }
 
     fun getUser():Single<UserResponse>{
-        return userService.getUserWith("cd5e5f5839d0518f6bc9e31605a3eff4de89b1c7d21dda1061eda41fe7117796")
+        return userService.getUserWith("Bearer fa21565c64fc9e708a41ed899633069ea2c780b61c0aa019e1e10be6cd801088")
     }
 }
