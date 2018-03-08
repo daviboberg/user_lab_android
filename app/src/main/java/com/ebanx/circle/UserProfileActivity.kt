@@ -65,26 +65,28 @@ class UserProfileActivity : AppCompatActivity() {
 
     }
 
-    fun setUpViewWith(user:UserDataResponse){
+    fun setUpViewWith(user:UserDataResponse) {
         nameTextView.text = user.first_name + " " + user.last_name
         emailTextView.text = user.email
         jobTextView.text = user.job_title
         teamTextView.text = "time"
-       Picasso.with(this.baseContext)
+        Picasso.with(this.baseContext)
                 .load(user.avatar_urls.medium)
                 .into(userProfileImageView)
 
-    override fun onStop() {
-        if (isFinishing){
+    }
+        override fun onStop() {
+            if (isFinishing) {
+                disposable?.dispose()
+            }
+            super.onStop()
+        }
+
+        override fun onDestroy() {
+            super.onDestroy()
             disposable?.dispose()
         }
-        super.onStop()
-    }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        disposable?.dispose()
-    }
 
 
     fun getUserList(){
