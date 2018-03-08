@@ -4,4 +4,6 @@
     <string name="title_activity_user_profile">UserProfileActivity</string>
     <string name="title_activity_evaluate_profile">EvaluateProfileActivity</string>
     <string name="title_activity_evaluation">EvaluationActivity</string>
+    <string name="title_activity_list_view">ListViewActivity</string>
+    <string name="title_activity_list_item_actitivy">ListItemActitivy</string>
 </resources>
