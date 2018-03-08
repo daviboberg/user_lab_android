@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_user_profile.*
 import Model.UserDataResponse
 import Model.UserListServiceImpl
 import Model.UserServiceImpl
-
+import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -67,7 +67,10 @@ class UserProfileActivity : AppCompatActivity() {
         nameTextView.text = user.first_name + " " + user.last_name
         emailTextView.text = user.email
         jobTextView.text = user.job_title
-        teamTextView.text = user.avatar_urls.medium
+        teamTextView.text = "time"
+       Picasso.with(this.baseContext)
+                .load(user.avatar_urls.medium)
+                .into(userProfileImageView)
 
     }
 
@@ -103,6 +106,7 @@ class UserProfileActivity : AppCompatActivity() {
                     println(error.message)
                 })
     }
+
 
     fun getToken(){
 
