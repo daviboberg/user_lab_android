@@ -73,6 +73,7 @@ class UserProfileActivity : AppCompatActivity() {
         Picasso.with(this.baseContext)
                 .load(user.avatar_urls.medium)
                 .into(userProfileImageView)
+    }
 
     }
         override fun onStop() {
