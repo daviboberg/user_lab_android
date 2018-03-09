@@ -71,7 +71,7 @@ class UserProfileFragment : Fragment() {
             return fragment
         }
     }
-    fun getUser(){
+    private fun getUser(){
 
         val userService = UserServiceImpl()
 
@@ -108,6 +108,7 @@ class UserProfileFragment : Fragment() {
         Picasso.with(context)
                 .load(user.avatar_urls.medium)
                 .into(userProfileImageView)
+
 
     }
 

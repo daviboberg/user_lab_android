@@ -1,5 +1,6 @@
 package com.ebanx.circle
 
+import Model.TokenDataManager
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -24,6 +25,12 @@ class UserListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val tokenDataManager = TokenDataManager(context)
+
+        val authenticate = tokenDataManager.readAuthentication()
+
+        println(authenticate?.access_token)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,

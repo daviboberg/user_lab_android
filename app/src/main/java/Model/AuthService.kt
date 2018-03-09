@@ -6,6 +6,8 @@ package Model
  */
 
 
+import android.content.Context
+import com.squareup.moshi.Moshi
 import io.reactivex.Single
 import retrofit2.http.POST
 import retrofit2.http.Query

@@ -14,4 +14,8 @@ class TokenManager private constructor() {
         val instance: TokenManager by lazy { Holder.INSTANCE }
     }
     var authenticationData: AuthenticationDataResponse? = null
+
+    fun readToken(){
+
+    }
 }
