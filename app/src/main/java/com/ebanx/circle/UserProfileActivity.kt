@@ -75,7 +75,7 @@ class UserProfileActivity : AppCompatActivity() {
                 .into(userProfileImageView)
     }
 
-    }
+
         override fun onStop() {
             if (isFinishing) {
                 disposable?.dispose()
