@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 
-import kotlinx.android.synthetic.main.activity_user_profile.*
 import Model.UserDataResponse
 import Model.UserListServiceImpl
 import Model.UserServiceImpl
@@ -13,8 +12,10 @@ import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.content_user_profile.*
+//import kotlinx.android.synthetic.main.content_user_profile.*
+import kotlinx.android.synthetic.main.fragment_user_profile.*
 
+//import kotlinx.android.synthetic.main.content_user_profile.*
 
 class UserProfileActivity : AppCompatActivity() {
 
@@ -25,8 +26,8 @@ class UserProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_profile)
-        setSupportActionBar(toolbar)
+        setContentView(R.layout.fragment_user_profile)
+        //setSupportActionBar(toolbar)
 
 
         getUser()
@@ -66,15 +67,14 @@ class UserProfileActivity : AppCompatActivity() {
     }
 
     fun setUpViewWith(user:UserDataResponse) {
-        nameTextView.text = user.first_name + " " + user.last_name
-        emailTextView.text = user.email
-        jobTextView.text = user.job_title
-        teamTextView.text = "time"
+
+        userProfileNameTextView.text = user.first_name + " " + user.last_name
+        userProfileEmailTextView.text = user.email
+        userProfileJobTextView.text = user.job_title
+        userProfileTeamTextView.text = "time"
         Picasso.with(this.baseContext)
                 .load(user.avatar_urls.medium)
                 .into(userProfileImageView)
-    }
-
     }
         override fun onStop() {
             if (isFinishing) {

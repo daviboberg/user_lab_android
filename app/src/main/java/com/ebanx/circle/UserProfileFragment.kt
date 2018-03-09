@@ -3,7 +3,6 @@ package com.ebanx.circle
 
 import Model.UserDataResponse
 import Model.UserServiceImpl
-import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -14,7 +13,7 @@ import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_evaluate_profile.*
+import kotlinx.android.synthetic.main.fragment_user_profile.*
 
 
 class UserProfileFragment : Fragment() {
@@ -35,8 +34,7 @@ class UserProfileFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
 
-
-        return inflater!!.inflate(R.layout.fragment_evaluate_profile, container, false)
+        return inflater!!.inflate(R.layout.fragment_user_profile, container, false)
     }
 
     // TODO: Rename method, update argument and hook method into UI event

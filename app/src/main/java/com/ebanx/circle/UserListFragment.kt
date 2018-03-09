@@ -7,6 +7,11 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_user_list.*
+
 
 
 /**
@@ -19,17 +24,35 @@ import android.view.ViewGroup
  */
 class UserListFragment : Fragment() {
 
+    private lateinit var imageResIds: IntArray
+    private lateinit var names: Array<String>
+    private lateinit var descriptions: Array<String>
+    //private lateinit var listener: OnRageComicSelected
+
+    private lateinit var linearLayoutManager: LinearLayoutManager
+
     // TODO: Rename and change types of parameters
     private var mListener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        linearLayoutManager = LinearLayoutManager(context)
+        user_list_recycler_view.layoutManager = linearLayoutManager
+
+        val recyclerView = user_list_recycler_view
+        recyclerView.adapter = UserListAdapter(names, context)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater!!.inflate(R.layout.fragment_user_list, container, false)
+        val view: View = inflater!!.inflate(R.layout.fragment_user_list, container,
+                false)
+        val activity = activity
+        val recyclerView = user_list_recycler_view
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        //recyclerView.adapter = RageComicAdapter(activity)
+        return view
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -39,9 +62,56 @@ class UserListFragment : Fragment() {
         }
     }
 
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+
+        val resources = context!!.resources
+        names = resources.getStringArray(R.array.names)
+
+        // Get rage face images.
+        val typedArray = resources.obtainTypedArray(R.array.images)
+        val imageCount = names.size
+        imageResIds = IntArray(imageCount)
+        for (i in 0..imageCount - 1) {
+            imageResIds[i] = typedArray.getResourceId(i, 0)
+        }
+        typedArray.recycle()
+    }
+
     override fun onDetach() {
         super.onDetach()
         mListener = null
+    }
+
+    internal inner class UserListAdapter(context: Context) : RecyclerView.Adapter<ViewHolder>() {
+
+
+        private val layoutInflater: LayoutInflater
+
+        init {
+            layoutInflater = LayoutInflater.from(context)
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+        override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        }
+
+        override fun getItemCount(): Int {
+            return names.size
+        }
+    }
+
+    internal inner class ViewHolder constructor(itemView: View) :
+            RecyclerView.ViewHolder(itemView) {
+
+        /*
+        fun setData() {
+            user_list_recycler_view
+        }
+        */
     }
 
     /**
